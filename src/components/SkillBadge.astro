@@ -1,0 +1,39 @@
+---
+interface Props {
+  icon: string;
+  label: string;
+}
+const { icon, label } = Astro.props;
+---
+<span class="skill-badge">
+  <span class="skill-icon">{icon}</span>
+  {label}
+</span>
+
+<style>
+  .skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    cursor: default;
+    white-space: nowrap;
+  }
+
+  .skill-badge:hover {
+    background: rgba(220,38,38,0.15);
+    border-color: rgba(220,38,38,0.35);
+    color: #e2e8f0;
+  }
+
+  .skill-icon {
+    font-size: 1rem;
+  }
+</style>

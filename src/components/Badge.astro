@@ -1,5 +1,17 @@
-<span
-    class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5
-rounded dark:bg-blue-900 dark:text-blue-300"
-    ><slot /></span
->
+<span class="badge"><slot /></span>
+
+<style>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.7rem;
+    background: rgba(237, 58, 58, 0.18);
+    border: 1px solid rgba(237, 58, 58, 0.4);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #c9c9c9;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>

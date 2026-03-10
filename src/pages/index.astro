@@ -1,32 +1,635 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Badge from "../components/Badge.astro";
+import SkillBadge from "../components/SkillBadge.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+import GithubIcon from "../icons/Github.astro";
+import LinkedInIcon from "../icons/LinkedIn.astro";
+import MailIcon from "../icons/Mail.astro";
+import CodeIcon from "../icons/Code.astro";
+
+const skills = [
+	{ icon: "🐧", label: "Linux" },
+	{ icon: "🦀", label: "Rust" },
+	{ icon: "🐍", label: "Python" },
+	{ icon: "🔌", label: "Redes" },
+	{ icon: "🛠️", label: "Git" },
+	{ icon: "🧠", label: "Ensamblador" },
+];
+
+const projects = [
+	{
+		name: "ip-calculator",
+		description:
+			"Calculadora de subredes IP con soporte para CIDR, máscaras personalizadas e inferencia inteligente de parámetros.",
+		url: "https://github.com/Menton5000/ip-calculator",
+		language: "JavaScript",
+		topics: ["networking", "subnets", "tools"],
+	},
+	{
+		name: "portfolio-web",
+		description:
+			"Este mismo portfolio. Construido con Astro, diseño completamente custom y sin frameworks CSS externos.",
+		url: "https://github.com/Menton5000/portfolio-web",
+		language: "Astro",
+		topics: ["portfolio", "astro", "web"],
+	},
+	{
+		name: "cooklang-compiler",
+		description:
+			"Compilador para el lenguaje CookLang++, con análisis léxico, sintáctico, semántico y generación de código.",
+		url: "https://github.com/Menton5000",
+		language: "Python",
+		topics: ["compiler", "formal-languages", "university"],
+	},
+];
 ---
 
-<Layout title="Mi portfolio con Astro y Tailwind">
+<Layout title="Alejandro Moreno — Portfolio">
 	<main>
-		<section class="w-full lg:w-[740px] mx-auto py-44">
-			<img
-				class="rounded-full w-12 h-12"
-				src="../me.png"
-				alt="Alejandro Moreno"
-			/>
-			<h1
-				class="text-white text-5xl font-bold flex justify-center flex-row gap-x-2 pb-4"
-			>
-				Hola, Soy Alejandro Moreno <div
-					class="flex justify-center items-center"
-				>
-					<Badge>Estudiante</Badge>
+		<!-- ===================== HERO ===================== -->
+		<section id="inicio" class="hero">
+			<div class="container">
+				<div class="hero-top">
+					<img
+						class="avatar"
+						src="/me.png"
+						alt="Foto de Alejandro Moreno"
+					/>
+					<Badge>Disponible para trabajar</Badge>
 				</div>
-				<h2>
-					Desarrollador junior y apasionado por la informática. De
-					Madrid, España.
-				</h2>
-			</h1>
+
+				<h1 class="hero-title">
+					Hola, soy <span class="gradient-text">Alejandro Moreno</span
+					>
+				</h1>
+
+				<p class="hero-subtitle">
+					Desarrollador junior apasionado por el <span class="accent"
+						>bajo nivel</span
+					>, la seguridad informática y el desarrollo de software. De <strong
+						>Madrid, España</strong
+					> — buscando crecer en el mundo tech.
+				</p>
+
+				<div class="hero-cta">
+					<a
+						href="https://github.com/Menton5000"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn btn-primary"
+						id="btn-github"
+					>
+						<GithubIcon class="btn-icon" />
+						GitHub
+					</a>
+					<a
+						href="https://www.linkedin.com/in/alejandro-moreno/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn btn-secondary"
+						id="btn-linkedin"
+					>
+						<LinkedInIcon class="btn-icon" />
+						LinkedIn
+					</a>
+					<a
+						href="mailto:alejandro@example.com"
+						class="btn btn-ghost"
+						id="btn-mail"
+					>
+						<MailIcon class="btn-icon" />
+						Contacto
+					</a>
+				</div>
+			</div>
 		</section>
+
+		<!-- ===================== SKILLS ===================== -->
+		<section id="habilidades" class="section">
+			<div class="container">
+				<div class="section-header">
+					<CodeIcon class="section-icon" />
+					<span class="section-label">Stack técnico</span>
+				</div>
+				<h2 class="section-title">Tecnologías &amp; Habilidades</h2>
+				<p class="section-desc">
+					Enfocado en sistemas de bajo nivel, seguridad y desarrollo
+					web moderno.
+				</p>
+				<div class="skills-grid">
+					{
+						skills.map((s) => (
+							<SkillBadge icon={s.icon} label={s.label} />
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== PROJECTS ===================== -->
+		<section id="proyectos" class="section">
+			<div class="container">
+				<div class="section-header">
+					<GithubIcon class="section-icon" />
+					<span class="section-label">Mis proyectos</span>
+				</div>
+				<h2 class="section-title">Lo que he construido</h2>
+				<p class="section-desc">
+					Una selección de proyectos personales y académicos que
+					muestran mis intereses y capacidades.
+				</p>
+				<div class="projects-grid">
+					{
+						projects.map((p) => (
+							<ProjectCard
+								name={p.name}
+								description={p.description}
+								url={p.url}
+								language={p.language}
+								topics={p.topics}
+							/>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== SOBRE MÍ ===================== -->
+		<section id="sobre-mi" class="section">
+			<div class="container">
+				<div class="section-header">
+					<span class="section-icon-emoji">👤</span>
+					<span class="section-label">Sobre mí</span>
+				</div>
+				<h2 class="section-title">Un poco sobre mí</h2>
+				<div class="about-grid">
+					<div class="about-text">
+						<p>
+							Soy estudiante de Informática en Madrid, con un
+							especial interés por la <span class="accent"
+								>programación de sistemas</span
+							>, el
+							<span class="accent">bajo nivel</span> y la
+							<span class="accent">ciberseguridad</span>. Me
+							encanta entender cómo funcionan las cosas por
+							dentro.
+						</p>
+						<p>
+							Cuando no estoy programando, suelo explorar nuevas
+							tecnologías, leer sobre arquitecturas de hardware o
+							resolver retos de CTF. Creo en el aprendizaje
+							continuo y en compartir conocimiento.
+						</p>
+						<p>
+							Estoy buscando activamente mi primera oportunidad
+							profesional en un entorno donde pueda seguir
+							creciendo y aportar valor desde el primer día.
+						</p>
+					</div>
+					<div class="about-cards">
+						<div class="about-card">
+							<span class="about-card-icon">🎓</span>
+							<div>
+								<strong>Formación</strong>
+								<p>Grado en Ingeniería Informática</p>
+							</div>
+						</div>
+						<div class="about-card">
+							<span class="about-card-icon">📍</span>
+							<div>
+								<strong>Ubicación</strong>
+								<p>Madrid, España</p>
+							</div>
+						</div>
+						<div class="about-card">
+							<span class="about-card-icon">🎯</span>
+							<div>
+								<strong>Intereses</strong>
+								<p>Bajo nivel, seguridad, sistemas</p>
+							</div>
+						</div>
+						<div class="about-card">
+							<span class="about-card-icon">💼</span>
+							<div>
+								<strong>Estado</strong>
+								<p>Buscando oportunidades</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== CONTACTO ===================== -->
+		<section id="contacto" class="section section-last">
+			<div class="container">
+				<div class="contact-box">
+					<div class="contact-glow"></div>
+					<span class="contact-emoji">✉️</span>
+					<h2 class="contact-title">¿Hablamos?</h2>
+					<p class="contact-desc">
+						Estoy abierto a propuestas de trabajo, colaboraciones o
+						simplemente charlar sobre tecnología. ¡No dudes en
+						escribirme!
+					</p>
+					<div class="contact-links">
+						<a
+							href="mailto:alejandro@example.com"
+							class="btn btn-primary"
+							id="contact-mail-btn"
+						>
+							<MailIcon class="btn-icon" />
+							Enviar email
+						</a>
+						<a
+							href="https://www.linkedin.com/in/alejandro-moreno/"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="btn btn-secondary"
+							id="contact-linkedin-btn"
+						>
+							<LinkedInIcon class="btn-icon" />
+							LinkedIn
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== FOOTER ===================== -->
+		<footer class="footer">
+			<div class="container footer-inner">
+				<span class="footer-logo">AM<span>.</span></span>
+				<p>
+					Hecho con ♥ usando <a
+						href="https://astro.build"
+						target="_blank"
+						rel="noopener noreferrer">Astro</a
+					> · {new Date().getFullYear()}
+				</p>
+			</div>
+		</footer>
 	</main>
 </Layout>
 
-<style></style>
+<style>
+	/* ---- Container ---- */
+	.container {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+
+	/* ---- Hero ---- */
+	.hero {
+		padding: 7rem 0 5rem;
+		text-align: center;
+	}
+
+	.hero-top {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid rgba(220, 38, 38, 0.5);
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.25);
+  }
+
+	.hero-title {
+		font-size: clamp(2.2rem, 5vw, 3.5rem);
+		font-weight: 800;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		margin-bottom: 1.25rem;
+		color: #f1f5f9;
+	}
+
+	  .gradient-text {
+    background: linear-gradient(135deg, #f87171 0%, #dc2626 50%, #fca5a5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+	.hero-subtitle {
+		font-size: 1.1rem;
+		color: #94a3b8;
+		max-width: 560px;
+		margin: 0 auto 2.5rem;
+		line-height: 1.75;
+	}
+
+	.accent {
+		color: #f87171;
+		font-weight: 600;
+	}
+
+	.hero-cta {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	/* ---- Buttons ---- */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.6rem 1.3rem;
+		border-radius: 10px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: all 0.2s;
+		cursor: pointer;
+		border: 1px solid transparent;
+	}
+
+	.btn-icon {
+		width: 17px;
+		height: 17px;
+	}
+
+	  .btn-primary {
+    background: #dc2626;
+    color: white;
+    border-color: #dc2626;
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
+  }
+  .btn-primary:hover {
+    background: #b91c1c;
+    box-shadow: 0 6px 28px rgba(220, 38, 38, 0.5);
+    transform: translateY(-2px);
+  }
+
+	.btn-secondary {
+		background: rgba(255, 255, 255, 0.05);
+		color: #e2e8f0;
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+	.btn-secondary:hover {
+		background: rgba(255, 255, 255, 0.1);
+		border-color: rgba(255, 255, 255, 0.2);
+		transform: translateY(-2px);
+	}
+
+	.btn-ghost {
+		background: transparent;
+		color: #94a3b8;
+		border-color: rgba(255, 255, 255, 0.08);
+	}
+	.btn-ghost:hover {
+		color: #e2e8f0;
+		background: rgba(255, 255, 255, 0.05);
+		transform: translateY(-2px);
+	}
+
+	/* ---- Sections ---- */
+	.section {
+		padding: 5rem 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.section-last {
+		padding-bottom: 3rem;
+	}
+
+	.section-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	  .section-icon {
+    width: 16px;
+    height: 16px;
+    color: #dc2626;
+  }
+
+	.section-icon-emoji {
+		font-size: 1rem;
+		line-height: 1;
+	}
+
+	  .section-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #dc2626;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+	.section-title {
+		font-size: clamp(1.6rem, 3vw, 2.2rem);
+		font-weight: 800;
+		color: #f1f5f9;
+		margin-bottom: 0.75rem;
+		letter-spacing: -0.02em;
+	}
+
+	.section-desc {
+		color: #94a3b8;
+		font-size: 1rem;
+		margin-bottom: 2.5rem;
+		max-width: 520px;
+		line-height: 1.7;
+	}
+
+	/* ---- Skills ---- */
+	.skills-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6rem;
+	}
+
+	/* ---- Projects ---- */
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 1rem;
+	}
+
+	/* ---- About ---- */
+	.about-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: start;
+	}
+
+	.about-text {
+		display: flex;
+		flex-direction: column;
+		gap: 1.1rem;
+	}
+
+	.about-text p {
+		color: #94a3b8;
+		line-height: 1.8;
+		font-size: 0.97rem;
+	}
+
+	.about-cards {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+	}
+
+	.about-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 1rem 1.1rem;
+		background: rgba(255, 255, 255, 0.03);
+		border: 1px solid rgba(255, 255, 255, 0.07);
+		border-radius: 12px;
+		transition:
+			background 0.2s,
+			border-color 0.2s;
+	}
+
+	  .about-card:hover {
+    background: rgba(220,38,38,0.08);
+    border-color: rgba(220,38,38,0.25);
+  }
+
+	.about-card-icon {
+		font-size: 1.3rem;
+		flex-shrink: 0;
+		margin-top: 0.1rem;
+	}
+
+	.about-card strong {
+		display: block;
+		font-size: 0.82rem;
+		color: #e2e8f0;
+		font-weight: 600;
+		margin-bottom: 0.15rem;
+	}
+
+	.about-card p {
+		font-size: 0.8rem;
+		color: #64748b;
+		line-height: 1.4;
+	}
+
+	/* ---- Contact ---- */
+	  .contact-box {
+    position: relative;
+    text-align: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    overflow: hidden;
+  }
+
+	  .contact-glow {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 300px;
+    background: radial-gradient(ellipse at center, rgba(220,38,38,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+	.contact-emoji {
+		font-size: 2.5rem;
+		display: block;
+		margin-bottom: 1rem;
+	}
+
+	.contact-title {
+		font-size: clamp(1.8rem, 4vw, 2.5rem);
+		font-weight: 800;
+		color: #f1f5f9;
+		margin-bottom: 1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.contact-desc {
+		color: #94a3b8;
+		font-size: 1rem;
+		max-width: 480px;
+		margin: 0 auto 2rem;
+		line-height: 1.75;
+	}
+
+	.contact-links {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	/* ---- Footer ---- */
+	.footer {
+		border-top: 1px solid rgba(255, 255, 255, 0.05);
+		padding: 2rem 0;
+		margin-top: 2rem;
+	}
+
+	.footer-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.footer-logo {
+		font-weight: 800;
+		font-size: 1.1rem;
+		color: white;
+	}
+
+	  .footer-logo span {
+    color: #dc2626;
+  }
+
+	.footer p {
+		color: #475569;
+		font-size: 0.85rem;
+	}
+
+	  .footer a {
+    color: #dc2626;
+    text-decoration: none;
+  }
+	.footer a:hover {
+		text-decoration: underline;
+	}
+
+	/* ---- Responsive ---- */
+	@media (max-width: 768px) {
+		.about-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.hero {
+			padding: 5rem 0 3.5rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.about-cards {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

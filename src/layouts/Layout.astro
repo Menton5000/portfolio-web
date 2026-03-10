@@ -4,41 +4,105 @@ import Header from "../components/Header.astro";
 
 interface Props {
 	title: string;
+	description?: string;
 }
-const { title } = Astro.props;
+const { title, description = "Portfolio de Alejandro Moreno Pérez - Desarrollador junior apasionado por la informática, el bajo nivel y la seguridad." } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Alejandro Moreno Pérez" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 		<title>{title}</title>
 	</head>
 	<body>
-		<div
-			class="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#130000_1px)] bg-[size:20px_20px]"
-		>
-		</div>
+		<!-- Animated background -->
+		<div class="bg-grid"></div>
+		<div class="bg-glow"></div>
+
 		<Header />
 		<slot />
+
 		<style is:global>
+			*, *::before, *::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
 			:root {
-				color-scheme: light dark;
+				color-scheme: dark;
+				--accent: #dc2626;
+				--accent-light: #f87171;
+				--accent-glow: rgba(220, 38, 38, 0.3);
+				--yellow: #fbbf24;
+				--text: #e2e8f0;
+				--text-muted: #94a3b8;
+				--surface: rgba(255,255,255,0.04);
+				--border: rgba(255,255,255,0.08);
 			}
 
 			html {
-				font-family: system-ui, sans-serif;
+				font-family: 'Inter', system-ui, sans-serif;
+				scroll-behavior: smooth;
 			}
 
 			body {
-				background: #050505;
+				background: #030712;
+				color: var(--text);
+				min-height: 100vh;
 				display: flex;
 				flex-direction: column;
-				justify-content: center;
-				height: 100vh;
+				overflow-x: hidden;
+			}
+
+			.bg-grid {
+				position: fixed;
+				inset: 0;
+				z-index: -2;
+				background-image:
+					linear-gradient(rgba(220, 38, 38, 0.04) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(220, 38, 38, 0.04) 1px, transparent 1px);
+				background-size: 50px 50px;
+			}
+
+			.bg-glow {
+				position: fixed;
+				top: -20%;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 900px;
+				height: 600px;
+				background: radial-gradient(ellipse at center, rgba(220,38,38,0.15) 0%, transparent 70%);
+				z-index: -1;
+				pointer-events: none;
+			}
+
+			::selection {
+				background: var(--accent);
+				color: white;
+			}
+
+			::-webkit-scrollbar {
+				width: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: #0a0a0a;
+			}
+			::-webkit-scrollbar-thumb {
+				background: var(--accent);
+				border-radius: 3px;
 			}
 		</style>
 	</body>
