@@ -1,8 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import Badge from "../components/Badge.astro";
 ---
 
-<Layout>
-	<Header />
+<Layout title="Mi portfolio con Astro y Tailwind">
+	<main>
+		<section class="w-full lg:w-[740px] mx-auto py-44">
+			<img
+				class="rounded-full w-12 h-12"
+				src="../me.png"
+				alt="Alejandro Moreno"
+			/>
+			<h1
+				class="text-white text-5xl font-bold flex justify-center flex-row gap-x-2 pb-4"
+			>
+				Hola, Soy Alejandro Moreno <div
+					class="flex justify-center items-center"
+				>
+					<Badge>Estudiante</Badge>
+				</div>
+				<h2>
+					Desarrollador junior y apasionado por la informática. De
+					Madrid, España.
+				</h2>
+			</h1>
+		</section>
+	</main>
 </Layout>
+
+<style></style>
