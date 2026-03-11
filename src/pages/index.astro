@@ -40,7 +40,7 @@ const projects = [
 		description:
 			"Compilador para el lenguaje CookLang++, con análisis léxico, sintáctico, semántico y generación de código.",
 		url: "https://github.com/Menton5000",
-		language: "Python",
+		language: "C",
 		topics: ["compiler", "formal-languages", "university"],
 	},
 ];
@@ -296,14 +296,14 @@ const projects = [
 		margin-bottom: 1.5rem;
 	}
 
-	  .avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 2px solid rgba(220, 38, 38, 0.5);
-    object-fit: cover;
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.25);
-  }
+	.avatar {
+		width: 56px;
+		height: 56px;
+		border-radius: 50%;
+		border: 2px solid rgba(220, 38, 38, 0.5);
+		object-fit: cover;
+		box-shadow: 0 0 20px rgba(220, 38, 38, 0.25);
+	}
 
 	.hero-title {
 		font-size: clamp(2.2rem, 5vw, 3.5rem);
@@ -314,12 +314,17 @@ const projects = [
 		color: #f1f5f9;
 	}
 
-	  .gradient-text {
-    background: linear-gradient(135deg, #f87171 0%, #dc2626 50%, #fca5a5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+	.gradient-text {
+		background: linear-gradient(
+			135deg,
+			#f87171 0%,
+			#dc2626 50%,
+			#fca5a5 100%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
 
 	.hero-subtitle {
 		font-size: 1.1rem;
@@ -362,17 +367,17 @@ const projects = [
 		height: 17px;
 	}
 
-	  .btn-primary {
-    background: #dc2626;
-    color: white;
-    border-color: #dc2626;
-    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
-  }
-  .btn-primary:hover {
-    background: #b91c1c;
-    box-shadow: 0 6px 28px rgba(220, 38, 38, 0.5);
-    transform: translateY(-2px);
-  }
+	.btn-primary {
+		background: #dc2626;
+		color: white;
+		border-color: #dc2626;
+		box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
+	}
+	.btn-primary:hover {
+		background: #b91c1c;
+		box-shadow: 0 6px 28px rgba(220, 38, 38, 0.5);
+		transform: translateY(-2px);
+	}
 
 	.btn-secondary {
 		background: rgba(255, 255, 255, 0.05);
@@ -413,24 +418,24 @@ const projects = [
 		margin-bottom: 0.75rem;
 	}
 
-	  .section-icon {
-    width: 16px;
-    height: 16px;
-    color: #dc2626;
-  }
+	.section-icon {
+		width: 16px;
+		height: 16px;
+		color: #dc2626;
+	}
 
 	.section-icon-emoji {
 		font-size: 1rem;
 		line-height: 1;
 	}
 
-	  .section-label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #dc2626;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
+	.section-label {
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: #dc2626;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
 
 	.section-title {
 		font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -496,15 +501,13 @@ const projects = [
 		background: rgba(255, 255, 255, 0.03);
 		border: 1px solid rgba(255, 255, 255, 0.07);
 		border-radius: 12px;
-		transition:
-			background 0.2s,
-			border-color 0.2s;
+		transition: background 0.2s, border-color 0.2s;
 	}
 
-	  .about-card:hover {
-    background: rgba(220,38,38,0.08);
-    border-color: rgba(220,38,38,0.25);
-  }
+	.about-card:hover {
+		background: rgba(220, 38, 38, 0.08);
+		border-color: rgba(220, 38, 38, 0.25);
+	}
 
 	.about-card-icon {
 		font-size: 1.3rem;
@@ -527,26 +530,30 @@ const projects = [
 	}
 
 	/* ---- Contact ---- */
-	  .contact-box {
-    position: relative;
-    text-align: center;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(220,38,38,0.2);
-    border-radius: 20px;
-    padding: 4rem 2rem;
-    overflow: hidden;
-  }
+	.contact-box {
+		position: relative;
+		text-align: center;
+		background: rgba(255, 255, 255, 0.03);
+		border: 1px solid rgba(220, 38, 38, 0.2);
+		border-radius: 20px;
+		padding: 4rem 2rem;
+		overflow: hidden;
+	}
 
-	  .contact-glow {
-    position: absolute;
-    top: -40%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px;
-    height: 300px;
-    background: radial-gradient(ellipse at center, rgba(220,38,38,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
+	.contact-glow {
+		position: absolute;
+		top: -40%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 500px;
+		height: 300px;
+		background: radial-gradient(
+			ellipse at center,
+			rgba(220, 38, 38, 0.12) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+	}
 
 	.contact-emoji {
 		font-size: 2.5rem;
@@ -599,19 +606,19 @@ const projects = [
 		color: white;
 	}
 
-	  .footer-logo span {
-    color: #dc2626;
-  }
+	.footer-logo span {
+		color: #dc2626;
+	}
 
 	.footer p {
 		color: #475569;
 		font-size: 0.85rem;
 	}
 
-	  .footer a {
-    color: #dc2626;
-    text-decoration: none;
-  }
+	.footer a {
+		color: #dc2626;
+		text-decoration: none;
+	}
 	.footer a:hover {
 		text-decoration: underline;
 	}
